@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<style type="text/css">
+
+		.boxs {
+			height: 100px;
+			width: 100px;
+			background-color: green;
+			border: solid;
+			position: absolute;
+		}
+		.firsBox {
+			background-color: white;
+			background-image: url(duckl.png);
+		}
+
+	</style>
+</head>
+<body>
+	<div class="content">
+		<h4 style="margin-left: 20px">Score: <span class="score">100</span></h4>
+		<h2 style="text-align: center;">дойди до конца и не потеряй все очки</h2>
+		<img src="dice.png" class="bt" style="width: 100px; margin-left: 20px">		
+		<div class="boxs firsBox" style="margin-left: 20px">
+			<h4>finish</h4>
+		</div>
+		<div class="boxs" style="margin-left: 130px">1</div>
+		<div class="boxs" style="margin-left: 240px">2</div>
+		<div class="boxs" style="margin-left: 350px; background-color: red">3 <p>-10 очков</p></div>
+				
+		<div class="boxs" style="margin-left: 460px">4</div> 
+		<div class="boxs" style="margin-left: 570px">5</div>
+		<div class="boxs" style="margin-left: 680px;  background-color: red">6 <p>-10 очков</p></div>
+		<div class="boxs" style="margin-left: 790px">7</div>
+
+		<div class="boxs" style="margin-left: 900px">8</div>
+		<div class="boxs" style="margin-left: 1010px;background-color: red" >9 <p>-10 очков</p></div>
+		<div class="boxs" style="margin-left: 1120px">10</div>
+		<div class="boxs" style="margin-left: 1230px; background-color: yellow" >11 <p>+10 очков</p></div>
+
+		<div class="boxs" style="margin-left: 1340px;background-color: red">12 
+			<p>иди назад на -5 клеток</p>
+		</div>
+		<div class="boxs" style="margin-left: 1340px; margin-top: 110px">13</div>
+		<div class="boxs" style="margin-left: 1340px; margin-top: 220px">14</div>	
+		<div class="boxs" style="margin-left: 1340px; margin-top: 330px; background-color: red" >15 <p>-10 очков</p></div>		
+
+		<div class="boxs" style="margin-left: 1340px; margin-top: 440px">16</div>
+		<div class="boxs" style="margin-left: 1230px; margin-top: 440px; background-color: red">17
+			<p>иди назад на -5 клеток</p>
+		</div>
+		<div class="boxs" style="margin-left: 1120px; margin-top: 440px">18</div>
+		<div class="boxs" style="margin-left: 1010px; margin-top: 440px;background-color: red" >19 <p>-10 очков</p></div>
+		<div class="boxs" style="margin-left: 900px; margin-top: 440px">20</div>
+		<div class="boxs" style="margin-left: 790px; margin-top: 440px">21</div>
+		<div class="boxs" style="margin-left: 680px; margin-top: 440px;background-color: red" >22 <p>-10 очков</p></div>
+		<div class="boxs" style="margin-left: 570px; margin-top: 440px;background-color: red" >23 <p>-10 очков</p></div>
+		<div class="boxs" style="margin-left: 460px; margin-top: 440px; background-color: yellow" >24 <p>+10 очков</p></div>
+		<div class="boxs" style="margin-left: 350px; margin-top: 440px">25</div>
+		<div class="boxs" style="margin-left: 240px; margin-top: 440px;background-color: red" >26 <p>-10 очков</p></div>
+		<div class="boxs" style="margin-left: 130px; margin-top: 440px">27</div>
+
+		<div class="boxs" style="margin-left: 20px; margin-top: 440px">28</div>
+		<div class="boxs" style="margin-left: 20px; margin-top: 330px; background-color: yellow" >29 <p>+10 очков</p></div>
+		<div class="boxs" style="margin-left: 20px; margin-top: 220px">30</div>	
+		<div class="boxs" style="margin-left: 20px; margin-top: 110px; background-color: red">31
+			<p>иди назад на -5 клеток</p>
+		</div>	
+
+		<!--последние дивы-->
+		<div class="boxs" style="margin-left: 130px; margin-top: 110px; background-color: green; opacity: 0"></div>
+		<div class="boxs" style="margin-left: 240px; margin-top: 110px; background-color: green; opacity: 0"></div>
+		<div class="boxs" style="margin-left: 350px; margin-top: 110px; background-color: green; opacity: 0"></div>
+		<div class="boxs" style="margin-left: 460px; margin-top: 110px; background-color: green; opacity: 0"></div>
+		<div class="boxs" style="margin-left: 570px; margin-top: 110px; background-color: green; opacity: 0"></div>
+		<div class="boxs" style="margin-left: 680px; margin-top: 110px; background-color: green; opacity: 0"></div>
+
+	</div>	
+		
+</body>
+</html>
+
+
+
+
+
+
+<script type="text/javascript">
+	let boxes = document.querySelectorAll(".boxs")
+	let btn = document.querySelector(".bt")
+	points = document.querySelector(".score")
+	num = 0
+	score = 100
+
+	btn.onclick = function(){
+		let random = Math.random()*+1;
+		let round = Math.round(random);
+		boxes[num].style.backgroundImage = "none"
+		num = num + round
+		boxes[num].style.backgroundImage = "url(duckl.png)"
+		if (score <=0){
+			alert("lose")
+			document.querySelector(".content").style.display = "none"
+		}
+		if(num > 31){
+			alert("win")
+			document.querySelector(".content").style.display = "none"
+		}
+		if(num == 17){
+			num = num -5
+			boxes[17].style.backgroundImage = "none"
+			boxes[num].style.backgroundImage = "url(duckl.png)"
+		}
+		if(num == 12){
+			num = num -5
+			boxes[12].style.backgroundImage = "none"
+			boxes[num].style.backgroundImage = "url(duckl.png)"
+		}
+		if(num == 31){
+			num = num -5
+			boxes[31].style.backgroundImage = "none"
+			boxes[num].style.backgroundImage = "url(duckl.png)"
+		}
+	
+		if(num == 3){
+			score = score - 10
+			points.innerHTML =score
+		}
+		if(num == 6){
+			score = score - 10
+			points.innerHTML = score
+		}
+		if(num == 9){
+			score = score - 10
+			points.innerHTML = score
+		}
+		if(num == 15){
+			score = score - 10
+			points.innerHTML = score
+		}
+		if(num == 17){
+			score = score - 10
+			points.innerHTML = score
+		}
+		if(num == 19){
+			score = score - 10
+			points.innerHTML = score
+		}
+		if(num == 22){
+			score = score - 10
+			points.innerHTML = score
+		}
+		if(num == 23){
+			score = score - 10
+			points.innerHTML = score
+		}
+		if(num == 26){
+			score = score - 10
+			points.innerHTML = score
+		}
+		if(num == 11){
+			score = score + 10
+			points.innerHTML = score
+		}
+		if(num == 24){
+			score = score + 10
+			points.innerHTML = score
+		}
+		if(num == 29){
+			score = score + 10
+			points.innerHTML = score
+		}
+	}
+</script>
